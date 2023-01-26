@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import ContinuousSlider from "./components/ContinuousSlider.tsx";
+import Square from "./components/Square.tsx";
 
 function App() {
+
+  const initPosition = 0;
+
+  const [position, setPosition] = useState(initPosition);
+  let bluePos = position * 1.2;
+  let redPos = position * (-1.2)
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <p>Welcome to Yarden's Place!</p>
       </header>
+      <div className="wrapper">
+        <div className="squares_container">
+          <Square color={'blue'} position={bluePos} />
+          <Square color={'red'} position={redPos} />
+        </div>
+        <div className="slider_container">
+          <ContinuousSlider setPosition={setPosition} />
+        </div>
+      </div>
     </div>
   );
 }
